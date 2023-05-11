@@ -8,26 +8,26 @@ public class FileLoggerConfiguration{
     private long maxFileSize;
     private String logFormat;
 
-    public FileLoggerConfiguration (File logFile, LoggingLevel loggingLevel, long maxFileSize, String logFormat) {
+    public FileLoggerConfiguration (File logFile, LoggingLevel loggingLevel, long maxFileSize, String logFormat){
         this.logFile = logFile;
         this.logFormat = logFormat;
         this.maxFileSize = maxFileSize;
         this.loggingLevel = loggingLevel;
     }
 
-    public File getLogFile () {
+    public File getLogFile (){
         return logFile;
     }
 
-    public LoggingLevel getLoggingLevel () {
+    public LoggingLevel getLoggingLevel (){
         return loggingLevel;
     }
 
-    public long getMaxFileSize () {
+    public long getMaxFileSize (){
         return maxFileSize;
     }
 
-    public String getLogFormat () {
+    public String getLogFormat (){
         return logFormat;
     }
 }

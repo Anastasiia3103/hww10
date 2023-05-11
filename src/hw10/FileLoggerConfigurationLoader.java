@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileLoggerConfigurationLoader{
-    public static FileLoggerConfiguration load (File configFile) throws IOException {
+public class FileLoggerConfigurationLoader {
+    public static FileLoggerConfiguration load (File configFile) throws IOException{
         BufferedReader reader = new BufferedReader (new FileReader (configFile));
         File file = null;
         LoggingLevel level = null;
