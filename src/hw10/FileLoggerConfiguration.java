@@ -2,7 +2,7 @@ package hw10;
 
 import java.io.File;
 
-public class FileLoggerConfiguration {
+public class FileLoggerConfiguration{
     private File logFile;
     private LoggingLevel loggingLevel;
     private long maxFileSize;
