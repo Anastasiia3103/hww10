@@ -9,28 +9,28 @@ import java.time.format.DateTimeFormatter;
 public class FileLogger {
     private FileLoggerConfiguration configuration;
 
-    public FileLogger (FileLoggerConfiguration configuration) {
+    public FileLogger (FileLoggerConfiguration configuration){
         this.configuration = configuration;
     }
 
-    public void debug (String message) throws FileMaxSizeReachedException {
-        if (configuration.getLoggingLevel () != LoggingLevel.DEBUG) {
+    public void debug (String message) throws FileMaxSizeReachedException{
+        if (configuration.getLoggingLevel () != LoggingLevel.DEBUG){
             return;
         }
         log ("DEBUG Message: " + message);
     }
 
-    public void info (String message) throws FileMaxSizeReachedException {
-        if (configuration.getLoggingLevel () != LoggingLevel.INFO) {
+    public void info (String message) throws FileMaxSizeReachedException{
+        if (configuration.getLoggingLevel () != LoggingLevel.INFO){
             return;
         }
         log ("INFO Message: " + message);
     }
 
-    private void log (String logMessage) throws FileMaxSizeReachedException {
+    private void log (String logMessage) throws FileMaxSizeReachedException{
         File logFile = configuration.getLogFile ();
         // Check if the log file exceeds the maximum file size
-        if (logFile.length () >= configuration.getMaxFileSize ()) {
+        if (logFile.length () >= configuration.getMaxFileSize ()){
             throw new FileMaxSizeReachedException ("Maximum file size reached. Max size: " + configuration.getMaxFileSize ()
                     + " bytes. Current size: " + logFile.length () + " bytes. File path: " + logFile.getAbsolutePath ());
         }
@@ -42,7 +42,7 @@ public class FileLogger {
         }
     }
 
-    private void createNewLogFile () throws FileMaxSizeReachedException {
+    private void createNewLogFile () throws FileMaxSizeReachedException{
         File logFile = configuration.getLogFile ();
         String logFileName = logFile.getName ();
         String logDirectory = logFile.getParent ();
@@ -54,7 +54,7 @@ public class FileLogger {
         String extension = (dotIndex != -1) ? logFileName.substring (dotIndex) : " ";
         String newLogFileName = baseName + " " + timestamp + extension;
         File newLogFile = new File (logDirectory, newLogFileName);
-        if (!newLogFile.exists ()) {
+        if (!newLogFile.exists ()){
             try {
                 newLogFile.createNewFile ();
             } catch (IOException e) {
@@ -66,7 +66,7 @@ public class FileLogger {
                 configuration.getMaxFileSize (), configuration.getLogFormat ());
     }
 
-    private String getFormattedLogMessage (String message) {
+    private String getFormattedLogMessage (String message){
         LocalDateTime currentTime = LocalDateTime.now ();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern (configuration.getLogFormat ());
         String formattedTime = currentTime.format (formatter);
@@ -80,7 +80,7 @@ enum LoggingLevel {
 }
 
 class FileMaxSizeReachedException extends Exception {
-    public FileMaxSizeReachedException (String message) {
+    public FileMaxSizeReachedException (String message){
         super (message);
     }
 }

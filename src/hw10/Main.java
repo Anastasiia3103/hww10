@@ -3,7 +3,7 @@ package hw10;
 import java.io.File;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main (String[] args){
         String configFilePath = "config.txt";
         File configFile = new File (configFilePath);
         File logFile = new File ("log.txt");
